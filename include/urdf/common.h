@@ -115,12 +115,6 @@ namespace urdf {
   template <typename Target>
   static inline Target lexical_cast(const std::string& str)
   {
-      return lexical_cast<Target>(str.c_str());
-  }
-
-  template <typename Target>
-  static inline Target lexical_cast(const char* str)
-  {
     Target ret = Target();
 
     std::stringstream ss(str);
