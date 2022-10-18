@@ -1,0 +1,10 @@
+
+config URDF_PARSER
+  bool "urdf parser enable"
+  default n
+  select CPLUSPLUS
+  select LIB_CPLUSPLUS
+  select EXCEPTIONS
+  select RTTI
+  help
+    urdf parser enable
