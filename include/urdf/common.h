@@ -13,8 +13,6 @@
 
 #include "urdf/exception.h"
 
-using namespace std;
-
 namespace urdf {
 
 	struct Vector3 {
@@ -34,7 +32,7 @@ namespace urdf {
 		Vector3(const Vector3 &other) : x(other.x), y(other.y), z(other.z) {}
 		Vector3() : x(0.), y(0.), z(0.) {}
 
-		static Vector3 fromVecStr(const string& vector_str);
+		static Vector3 fromVecStr(const std::string& vector_str);
 	};
 
 	struct Rotation {
@@ -62,7 +60,7 @@ namespace urdf {
 		Rotation() : x(0.), y(0.), z(0.), w(1.) {}
 
 		static Rotation fromRpy(double roll, double pitch, double yaw);
-		static Rotation fromRpyStr(const string &rotation_str);
+		static Rotation fromRpyStr(const std::string &rotation_str);
 	};
 
 	struct Color {

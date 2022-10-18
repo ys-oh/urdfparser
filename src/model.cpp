@@ -5,6 +5,7 @@
 #include "tinyxml/txml.h"
 
 using namespace urdf;
+using namespace std;
 
 std::shared_ptr<Link> UrdfModel::getLink(const string& name) {
 	if (link_map.find(name) == link_map.end()) {
