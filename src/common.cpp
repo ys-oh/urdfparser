@@ -1,9 +1,19 @@
 #include "urdf/common.h"
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
+#include <algorithm>
 
 using namespace urdf;
 using namespace std;
+
+namespace {
+static inline void split(std::vector<std::string>& answer, const std::string& input)
+{
+	std::stringstream ss(input);
+
+	std::string token;
+	while (ss >> token)
+		answer.push_back(token);
+}
+} // anonymouse namespace
 
 // ------------------- Vector Implementation -------------------
 
@@ -13,12 +23,12 @@ Vector3 Vector3::fromVecStr(const string& vector_str) {
 	vector<string> pieces;
 	vector<double> values;
 
-	boost::split( pieces, vector_str, boost::is_any_of(" "));
+	split(pieces, vector_str);
 	for (unsigned int i = 0; i < pieces.size(); ++i){
 		if (pieces[i] != ""){
 			try {
-				values.push_back(boost::lexical_cast<double>(pieces[i].c_str()));
-			} catch (boost::bad_lexical_cast &e) {
+				values.push_back(lexical_cast<double>(pieces[i].c_str()));
+			} catch (LexicalCastError &e) {
 				throw URDFParseError("Error not able to parse component (" + pieces[i] + ") to a double (while parsing a vector value)");
 			}
 		}
@@ -158,12 +168,12 @@ Color Color::fromColorStr(const std::string &vector_str) {
 	std::vector<std::string> pieces;
 	std::vector<float> values;
 
-	boost::split(pieces, vector_str, boost::is_any_of(" "));
+	split(pieces, vector_str);
 	for (int i = 0; i < pieces.size(); i++) {
 		if (!pieces[i].empty()) {
 			try {
-				values.push_back(boost::lexical_cast<double>(pieces[i].c_str()));
-			} catch (boost::bad_lexical_cast &e) {
+				values.push_back(lexical_cast<double>(pieces[i].c_str()));
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error parsing Color value " << i
 						  << " in color value string (" << vector_str

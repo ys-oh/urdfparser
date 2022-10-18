@@ -1,6 +1,4 @@
 #include "urdf/joint.h"
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
 
 namespace urdf{
 
@@ -16,8 +14,8 @@ namespace urdf{
 		const char* damping_str = xml->Attribute("damping");
 		if (damping_str != NULL){
 			try {
-				jd->damping = boost::lexical_cast<double>(damping_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jd->damping = lexical_cast<double>(damping_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 				          << "': dynamics damping value (" << damping_str
@@ -29,8 +27,8 @@ namespace urdf{
 		const char* friction_str = xml->Attribute("friction");
 		if (friction_str != NULL){
 			try {
-				jd->friction = boost::lexical_cast<double>(friction_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jd->friction = lexical_cast<double>(friction_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 				          << "': dynamics friction value (" << friction_str
@@ -57,8 +55,8 @@ namespace urdf{
 		const char* lower_str = xml->Attribute("lower");
 		if (lower_str != NULL){
 			try {
-				jl->lower = boost::lexical_cast<double>(lower_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jl->lower = lexical_cast<double>(lower_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 				          << "': limits lower value (" << lower_str
@@ -70,8 +68,8 @@ namespace urdf{
 		const char* upper_str = xml->Attribute("upper");
 		if (upper_str != NULL){
 			try {
-				jl->upper = boost::lexical_cast<double>(upper_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jl->upper = lexical_cast<double>(upper_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "': limits upper value (" << upper_str
@@ -83,8 +81,8 @@ namespace urdf{
 		const char* effort_str = xml->Attribute("effort");
 		if (effort_str != NULL){
 			try {
-				jl->effort = boost::lexical_cast<double>(effort_str);
-			} catch (boost::bad_lexical_cast &e){
+				jl->effort = lexical_cast<double>(effort_str);
+			} catch (LexicalCastError &e){
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' limits effort value (" << effort_str
@@ -101,8 +99,8 @@ namespace urdf{
 		const char* velocity_str = xml->Attribute("velocity");
 		if (velocity_str != NULL){
 			try {
-				jl->velocity = boost::lexical_cast<double>(velocity_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jl->velocity = lexical_cast<double>(velocity_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' limits velocity value (" << velocity_str
@@ -127,8 +125,8 @@ namespace urdf{
 		const char* lower_limit_str = xml->Attribute("lower_limit");
 		if (lower_limit_str != NULL) {
 			try {
-				js->lower_limit = boost::lexical_cast<double>(lower_limit_str);
-			} catch (boost::bad_lexical_cast &e) {
+				js->lower_limit = lexical_cast<double>(lower_limit_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' safety lower_limit value (" << lower_limit_str
@@ -140,8 +138,8 @@ namespace urdf{
 		const char* upper_limit_str = xml->Attribute("upper_limit");
 		if (upper_limit_str != NULL){
 			try {
-				js->upper_limit = boost::lexical_cast<double>(upper_limit_str);
-			} catch (boost::bad_lexical_cast &e) {
+				js->upper_limit = lexical_cast<double>(upper_limit_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' safety upper_limit value (" << upper_limit_str
@@ -153,8 +151,8 @@ namespace urdf{
 		const char* k_position_str = xml->Attribute("k_position");
 		if (k_position_str != NULL) {
 			try {
-				js->k_position = boost::lexical_cast<double>(k_position_str);
-			} catch (boost::bad_lexical_cast &e) {
+				js->k_position = lexical_cast<double>(k_position_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' safety k_position value (" << k_position_str
@@ -166,8 +164,8 @@ namespace urdf{
 		const char* k_velocity_str = xml->Attribute("k_velocity");
 		if (k_velocity_str != NULL) {
 			try {
-				js->k_velocity = boost::lexical_cast<double>(k_velocity_str);
-			} catch (boost::bad_lexical_cast &e) {
+				js->k_velocity = lexical_cast<double>(k_velocity_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' safety k_velocity value (" << k_velocity_str
@@ -192,8 +190,8 @@ namespace urdf{
 		const char* rising_str = xml->Attribute("rising");
 		if (rising_str != NULL) {
 			try {
-				jc->rising = boost::lexical_cast<double>(rising_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jc->rising = lexical_cast<double>(rising_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' calibration rising_position value (" << rising_str
@@ -205,8 +203,8 @@ namespace urdf{
 		const char* falling_str = xml->Attribute("falling");
 		if (falling_str != NULL) {
 			try {
-				jc->falling = boost::lexical_cast<double>(falling_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jc->falling = lexical_cast<double>(falling_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' calibration falling_position value (" << falling_str
@@ -236,8 +234,8 @@ namespace urdf{
 		const char* multiplier_str = xml->Attribute("multiplier");
 		if (multiplier_str != NULL) {
 			try {
-				jm->multiplier = boost::lexical_cast<double>(multiplier_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jm->multiplier = lexical_cast<double>(multiplier_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' mimic multiplier value (" << multiplier_str
@@ -249,8 +247,8 @@ namespace urdf{
 		const char* offset_str = xml->Attribute("offset");
 		if (offset_str != NULL) {
 			try {
-				jm->offset = boost::lexical_cast<double>(offset_str);
-			} catch (boost::bad_lexical_cast &e) {
+				jm->offset = lexical_cast<double>(offset_str);
+			} catch (LexicalCastError &e) {
 				std::ostringstream error_msg;
 				error_msg << "Error while parsing joint '" << getParentJointName(xml)
 						  << "' mimic offset value (" << offset_str

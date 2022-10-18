@@ -17,6 +17,19 @@ namespace urdf {
         return text.c_str();
       }
   };
+
+  class LexicalCastError: public std::exception {
+    std::string text;
+
+    public:
+      LexicalCastError(const std::string &error_msg) : std::exception() {
+        text = error_msg;
+      }
+
+      virtual const char* what() const noexcept {
+        return text.c_str();
+      }
+  };
 }
 
 #endif

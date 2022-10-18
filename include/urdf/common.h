@@ -111,6 +111,30 @@ namespace urdf {
 		Twist() : linear(Vector3()), angular(Vector3()) {}
 		Twist(const Twist& other) : linear(other.linear), angular(other.angular) {}
 	};
+
+  template <typename Target>
+  static inline Target lexical_cast(const std::string& str)
+  {
+      return lexical_cast<Target>(str.c_str());
+  }
+
+  template <typename Target>
+  static inline Target lexical_cast(const char* str)
+  {
+    Target ret = Target();
+
+    std::stringstream ss(str);
+    ss >> ret;
+    if (ss.fail())
+    {
+      std::ostringstream oss;
+      oss << "fail to parse \"" << str << "\"";
+
+      throw LexicalCastError(oss.str());
+    }
+
+    return ret;
+  }
 }
 
 #endif
