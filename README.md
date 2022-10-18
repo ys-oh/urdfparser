@@ -14,7 +14,7 @@ Feel free to use it in your own projects.<br>
 ## Build with your application
 
 ```shell
-west build -b <board> -s <source> -- -DZEPHYR_EXTRA_MODULE=<path/of/urdfparser>
+west build -b <board> -s <source> -- -DZEPHYR_EXTRA_MODULES=<path/of/urdfparser>
 ```
 
 ## Example application source code
@@ -97,7 +97,7 @@ void main()
             k_sleep(K_MSEC(1000));
         }
     }
-    catch (urdf::URDFParserError& e)
+    catch (urdf::URDFParseError& e)
     {
         printk("urdf error : %s", e.what());
     }
